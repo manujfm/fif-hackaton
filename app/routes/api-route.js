@@ -3,6 +3,6 @@ const { ratingsAndAeviews } = require('../middlewares');
 
 const router = Router();
 
-router.post('/ratings-and-reviews', ratingsAndAeviews);
+router.post('/ratingsAndReviews', ratingsAndAeviews);
 
 module.exports = router;
