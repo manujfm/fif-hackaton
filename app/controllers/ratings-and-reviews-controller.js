@@ -1,3 +1,4 @@
+const { query } = require('express');
 const Reviews = require('../models/ratings-and-reviews-model');
 
 module.exports.createRatingsAndReviews = async (review) => {
@@ -10,10 +11,17 @@ module.exports.createRatingsAndReviews = async (review) => {
   }
 };
 
-module.exports.findRatingsAndReviews = async (id) => {
+module.exports.getRatingsAndReviews = async (quey) => {
   try {
-    const review = Reviews.findById(id);
-    return review;
+    const offset = parseInt(quey.offset, 10);
+    const sortByField = quey.sortByFilter.field;
+    const sortByOrder = quey.sortByFilter.order;
+    const sortFilter = [sortByField, sortByOrder];
+    const result = await Reviews.find({ author_id: quey.author })
+      .skip(offset)
+      .limit(query.limit)
+      .sort([sortFilter]);
+    return result;
   } catch (error) {
     throw error;
   }
