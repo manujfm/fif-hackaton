@@ -20,7 +20,8 @@ module.exports.getRatingsAndReviews = async (quey) => {
     const result = await Reviews.find({ author_id: quey.author })
       .skip(offset)
       .limit(query.limit)
-      .sort([sortFilter]);
+      .sort([sortFilter])
+      // .lean();
     return result;
   } catch (error) {
     throw error;
@@ -29,7 +30,7 @@ module.exports.getRatingsAndReviews = async (quey) => {
 
 module.exports.findByEntityId = async (params) => {
   try {
-    const reviews = await Reviews.find({ product_id: params.entity_id });
+    const reviews = await Reviews.find({ product_id: params.entityId });
     return reviews;
   } catch (error) {
     throw error;

@@ -5,12 +5,12 @@ module.exports.averageRatingController = async (entity) => {
     const avg = await RatingsAndReviews.aggregate([
       {
         $match: {
-          product_id: `${entity}`
+          entity_id: `${entity}`
         }
       },
       {
         $group: {
-          _id: '$product_id',
+          _id: '$entity_id',
           totalNumberOfReviews: { $sum: 1 },
           averageRating: { $avg: '$rating' }
         }
