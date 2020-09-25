@@ -10,4 +10,4 @@ const ratingsAndReviewsSchema = new Schema({
   rating: { type: Number, required: true }
 });
 
-module.exports = mongoose.model('reviews', ratingsAndReviewsSchema);
+module.exports = mongoose.model('reviews', ratingsAndReviewsSchema, 'Reviews');
