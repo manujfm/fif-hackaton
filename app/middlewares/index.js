@@ -1,4 +1,5 @@
 const { reviewValidation } = require('./validations/review-validation-middleware');
+const { reviewIdValidationMiddleware } = require('./validations/review-id-valdiation-middleware');
 const { ratingsAndReviewsMiddleware } = require('./ratings-and-reviews-middleware');
 const { findReviewByIdMiddleware } = require('./find-review-by-id-middleware');
 const { getReviewByEntityValidation } = require('../middlewares/validations/review-validation-middleware');
@@ -18,6 +19,7 @@ module.exports.ratingsAndAeviews = [
 ];
 
 module.exports.getRatingsAndReviews = [
+  reviewIdValidationMiddleware,
   findReviewByIdMiddleware,
   responseMiddleware
 ];

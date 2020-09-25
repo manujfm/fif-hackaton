@@ -1,18 +1,20 @@
 const { findRatingsAndReviews } = require('../controllers/ratings-and-reviews-controller');
-const { Types } = require('mongoose');
 
+/**
+ * Finds one review by id, returns empty object on no row in db
+ * @param {Request} req
+ * @param {Response} res
+ * @param {Next} next
+ */
 module.exports.findReviewByIdMiddleware = async (req, res, next) => {
   try {
-    const { reviewId } = req.params;
-    if (!reviewId || !Types.ObjectId.isValid(reviewId)) {
-      return res.status(400).json({ message: 'invalid Id' });
-    }
+    const reviewId = req.params;
     const result = await findRatingsAndReviews(reviewId);
     req.response = result || {};
   } catch (error) {
     res.status(500).json({
       status: 'Error',
-      message: error
+      message: error,
     });
   }
   return next();
