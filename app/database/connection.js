@@ -1,16 +1,15 @@
 const mongoose = require('mongoose');
 const { mongodbUri } = require('./config');
 
-const mongoOptions = { retryWrites: false, useUnifiedTopology: true, useNewUrlParser: true };
+const mongoOptions = { useUnifiedTopology: true, useNewUrlParser: true };
 
 mongoose.connect(
   mongodbUri || 'localhost:27017',
   mongoOptions,
   (err, res) => {
-    console.log({ err, res });
     if (err) throw err;
 
-    console.log(`Mongodb running on host: ${res.host}, database: ${res.database}`);
+    console.log(`Mongodb running ${res}`);
   }
 );
 
@@ -26,4 +25,4 @@ mongoose.connection.on('disconnected', () => {
 
 module.exports = {
   mongoose
-}
+};
