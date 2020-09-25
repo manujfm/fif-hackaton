@@ -1,9 +1,10 @@
 const Router = require('express').Router;
-// const context = require('../config').context;
-// const getMiddlewares = require('fif-payments-get-middlewares');
+const { reviewValidation } = require('../middlewares/validations/review-validation-middleware');
+const { ratingsAndReviewsMiddleware } = require('../middlewares/ratings-and-reviews-middleware');
+const { responseMiddleware } = require('../middlewares/response/response-middleware');
 
 const router = Router();
 
-// router.get('/example', getMiddlewares(context.middlewares.example));
+router.post('/ratings-and-reviews', [reviewValidation, ratingsAndReviewsMiddleware, responseMiddleware]);
 
 module.exports = router;
