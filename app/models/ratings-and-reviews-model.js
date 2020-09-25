@@ -8,6 +8,8 @@ const ratingsAndReviewsSchema = new Schema({
   title: { type: String, required: true },
   description: { type: String },
   rating: { type: Number, required: true }
+}, {
+  timestamps: true
 });
 
 module.exports = mongoose.model('reviews', ratingsAndReviewsSchema, 'reviews');

@@ -21,7 +21,7 @@ module.exports.reviewValidation = async (req, res, next) => {
   if (!rating || !type(rating, 'string')) {
     return response(res, 400, 'Error', 'rating incorrect');
   }
-  req.review = { author_id, entity_id, title, review_text, rating };
+  req.review = { author_id, entity_id, title, description, rating };
 
   return next();
 };
