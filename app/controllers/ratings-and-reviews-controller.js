@@ -9,3 +9,12 @@ module.exports.createRatingsAndReviews = async (review) => {
     throw error;
   }
 };
+
+module.exports.findRatingsAndReviews = async (id) => {
+  try {
+    const review = Reviews.findById(id);
+    return review;
+  } catch (error) {
+    throw error;
+  }
+};
