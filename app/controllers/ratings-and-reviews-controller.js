@@ -18,3 +18,12 @@ module.exports.findRatingsAndReviews = async (id) => {
     throw error;
   }
 };
+
+module.exports.findByEntityId = async (params) => {
+  try {
+    const reviews = await Reviews.find({ entity_id: params.entity_id }, (err, reviews) => { reviews });
+    debugger
+  } catch (error) {
+    throw error;
+  }
+};
