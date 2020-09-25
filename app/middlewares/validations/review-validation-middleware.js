@@ -13,11 +13,6 @@ module.exports.reviewValidation = async (req, res, next) => {
   if (!title || !type(title, 'string')) {
     return response(res, 400, 'Error', 'title incorrect');
   }
-  /*
-  if (!review_text || !type(description, 'string')) {
-    return response(res, 400, 'Error', 'review_text incorrect');
-  }
-  */
   if (!rating || !type(rating, 'string')) {
     return response(res, 400, 'Error', 'rating incorrect');
   }
@@ -28,6 +23,7 @@ module.exports.reviewValidation = async (req, res, next) => {
 
 module.exports.getReviewByEntityValidation = async (req, res, next) => {
   const { entity_id, sortBy, offset, limit } = req.query;
+
   if (!entity_id || !type(entity_id, 'string')) {
     return response(res, 400, 'Error', 'entity_id is required');
   }
