@@ -26,3 +26,12 @@ module.exports.getRatingsAndReviews = async (quey) => {
     throw error;
   }
 };
+
+module.exports.findByEntityId = async (params) => {
+  try {
+    const reviews = await Reviews.find({ product_id: params.entity_id });
+    return reviews
+  } catch (error) {
+    throw error;
+  }
+};
