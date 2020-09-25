@@ -7,7 +7,7 @@ const { responseMiddleware } = require('./response/response-middleware');
 const { myReviewsValidationMiddleware } = require('./validations/my-reviews-validation-middleware');
 const { myReviewsMiddleware } = require('./my-reviews-middleware');
 const { checkEntityId } = require('../middlewares/checkEntityId.js');
-const { setEntityId } = require('../middlewares/setEntityId.js');
+const { setEntityId } = require('./validations/setEntityId.js');
 const { getAverageRating } = require('../middlewares/getAverageRating.js');
 
 
