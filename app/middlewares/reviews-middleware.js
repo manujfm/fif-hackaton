@@ -2,7 +2,7 @@ const { getByEntityRatingsAndReviews } = require('../controllers/reviews-control
 
 module.exports.reviewsMiddleware = async (req, res, next) => {
     try {
-        const result = await getByEntityRatingsAndReviews(params);
+        const result = await getByEntityRatingsAndReviews(req.queryParams);
         req.response = result;
     } catch (error) {
         res.status(500).json({

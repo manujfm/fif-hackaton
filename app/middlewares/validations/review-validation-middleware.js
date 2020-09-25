@@ -26,10 +26,10 @@ module.exports.reviewValidation = async (req, res, next) => {
   return next();
 };
 
-module.exports.getReviewsValidation = async (req, res, next) => {
-  const { entity_id, sortBy, offset, limit } = req.params;
+module.exports.getReviewByEntityValidation = async (req, res, next) => {
+  const { entity_id, sortBy, offset, limit } = req.query;
   if (!entity_id || !type(entity_id, 'string')) {
-    return response(res, 400, 'Error', 'entity_id incorrect');
+    return response(res, 400, 'Error', 'entity_id is required');
   }
   if (sortBy && (!type(sortBy, 'string'))) {
     return response(res, 400, 'Error', 'sortBy incorrect');
@@ -40,7 +40,7 @@ module.exports.getReviewsValidation = async (req, res, next) => {
   if (limit && (!type(limit, 'number') || (limit < 1 || limit > 100) || !Number.isInteger(limit))) {
     return response(res, 400, 'Error', 'limit incorrect');
   }
-  req.params = { entity_id, sortBy, offset, limit };
+  req.queryParams = { entity_id, sortBy, offset, limit };
 
   return next();
 };
