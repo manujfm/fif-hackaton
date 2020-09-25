@@ -1,8 +1,8 @@
-const RatingsAndReviews = require('../models/ratings-and-reviews-model');
+const Review = require('../models/review-model');
 
 module.exports.averageRatingController = async (entity) => {
   try {
-    const avg = await RatingsAndReviews.aggregate([
+    const avg = await Review.aggregate([
       {
         $match: {
           entity_id: `${entity}`
@@ -15,7 +15,7 @@ module.exports.averageRatingController = async (entity) => {
           averageRating: { $avg: '$rating' }
         }
       }
-    ]);
+    ]).lean();
     return avg;
   } catch (error) {
     throw error;

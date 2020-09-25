@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const ratingsAndReviewsSchema = new Schema({
+const reviewSchema = new Schema({
   author_id: { type: String, required: true },
   entity_id: { type: String, required: true },
   title: { type: String, required: true },
@@ -12,4 +12,4 @@ const ratingsAndReviewsSchema = new Schema({
   timestamps: true
 });
 
-module.exports = mongoose.model('reviews', ratingsAndReviewsSchema, 'reviews');
+module.exports = mongoose.model('reviews', reviewSchema, 'reviews');
