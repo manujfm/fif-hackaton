@@ -1,9 +1,12 @@
-const Router = require('express').Router;
-// const context = require('../config').context;
-// const getMiddlewares = require('fif-payments-get-middlewares');
+const express = require('express');
 
-const router = Router();
+const app = express.Router();
 
-// router.get('/example', getMiddlewares(context.middlewares.example));
+const { checkEntityId } = require('../middlewares/checkEntityId.js');
+const { setEntityId } = require('../middlewares/setEntityId.js');
+const { getAverageRating } = require('../middlewares/getAverageRating.js');
 
-module.exports = router;
+
+app.get('/averageRatings', [checkEntityId, setEntityId, getAverageRating]);
+
+module.exports = app;
