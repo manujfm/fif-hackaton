@@ -1,7 +1,10 @@
 // const { config } = require('../config');
 
 const utils = {
-  // exampleFunction: (example) => `This is an ${example}`
+  type: (value, type) => {
+    // eslint-disable-next-line valid-typeof
+    return typeof value === type;
+  }
 };
 
 module.exports = utils;
