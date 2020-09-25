@@ -1,9 +1,9 @@
 const { query } = require('express');
-const Reviews = require('../models/ratings-and-reviews-model');
+const Review = require('../models/review-model');
 
 module.exports.createRatingsAndReviews = async (review) => {
   try {
-    const newReview = new Reviews(review);
+    const newReview = new Review(review);
     const result = await newReview.save();
     return result;
   } catch (error) {
@@ -17,11 +17,11 @@ module.exports.getRatingsAndReviews = async (quey) => {
     const sortByField = quey.sortByFilter.field;
     const sortByOrder = quey.sortByFilter.order;
     const sortFilter = [sortByField, sortByOrder];
-    const result = await Reviews.find({ author_id: quey.author })
+    const result = await Review.find({ author_id: quey.author })
       .skip(offset)
       .limit(query.limit)
       .sort([sortFilter])
-      // .lean();
+      .lean();
     return result;
   } catch (error) {
     throw error;
@@ -30,7 +30,7 @@ module.exports.getRatingsAndReviews = async (quey) => {
 
 module.exports.findByEntityId = async (params) => {
   try {
-    const reviews = await Reviews.find({ product_id: params.entityId });
+    const reviews = await Review.find({ product_id: params.entityId }).lean();
     return reviews;
   } catch (error) {
     throw error;
