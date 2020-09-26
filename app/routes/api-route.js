@@ -15,6 +15,6 @@ router.get('/myReviews', myReviews);
 router.get('/ratingsAndReviews/:reviewId', getRatingsAndReviews);
 router.get('/reviews', getEntityIdRatingsAndReviews);
 router.get('/averageRatings', getAverageRatings);
-router.put('/cupdateOwnerResponse', updateOwnerRespone);
+router.patch('/cupdateOwnerResponse', updateOwnerRespone);
 
 module.exports = router;
