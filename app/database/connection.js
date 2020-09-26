@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { mongodbUri } = require('./config');
 
-const mongoOptions = { useUnifiedTopology: true, useNewUrlParser: true };
+const mongoOptions = { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false };
 
 mongoose.connect(
   mongodbUri || 'localhost:27017',

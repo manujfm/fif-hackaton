@@ -9,6 +9,7 @@ const { myReviewsValidationMiddleware } = require('./validations/my-reviews-vali
 const { myReviewsMiddleware } = require('./my-reviews-middleware');
 const { entityIdValidationMiddleware } = require('./validations/entity-id-validation-middleware');
 const { getAverageRating } = require('./get-average-rating-middleware');
+const { updateOwnerResponseMiddleware } = require('./update-owner-response-middleware');
 
 module.exports.ratingsAndAeviews = [
   reviewValidation,
@@ -37,5 +38,10 @@ module.exports.getAverageRatings = [
 module.exports.myReviews = [
   myReviewsValidationMiddleware,
   myReviewsMiddleware,
+  responseMiddleware
+];
+
+module.exports.updateOwnerRespone = [
+  updateOwnerResponseMiddleware,
   responseMiddleware
 ];

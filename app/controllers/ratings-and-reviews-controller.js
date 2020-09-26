@@ -11,6 +11,19 @@ module.exports.createRatingsAndReviews = async (review) => {
   }
 };
 
+module.exports.updateOwnerRespone = async (ownerResp) => {
+  try {
+    const response = await Review.findOneAndUpdate(
+      { _id: ownerResp.id },
+      { ownerRespone: ownerResp.response },
+      { new: true }
+    );
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};
+
 module.exports.getRatingsAndReviews = async (quey) => {
   try {
     const offset = parseInt(quey.offset, 10);
