@@ -36,3 +36,24 @@ module.exports.findByEntityId = async (params) => {
     throw error;
   }
 };
+
+module.exports.updateRatingsAndReviews = async (query) => {
+  try {
+    const finalReview = { ...query };
+    const remoteReview = query;
+    const localReview = await Review.findOne({
+      _id: query.id
+    }).lean();
+    if (!localReview.help || remoteReview.help > localReview.help) {
+      finalReview.help = remoteReview.help;
+    }
+    if (!localReview.help || remoteReview.useless > localReview.useless) {
+      finalReview.useless = remoteReview.useless;
+    }
+    finalReview.good_review_rating = finalReview.help - finalReview.useless;
+    const res = await Review.update(finalReview);
+    return res;
+  } catch (error) {
+    throw error;
+  }
+};

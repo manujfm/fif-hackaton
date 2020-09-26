@@ -7,7 +7,10 @@ const reviewSchema = new Schema({
   entity_id: { type: String, required: true },
   title: { type: String, required: true },
   description: { type: String },
-  rating: { type: Number, required: true }
+  rating: { type: Number, required: true },
+  help: { type: Number, default: 0 },
+  useless: { type: Number, default: 0 },
+  good_review_rating: { type: Number, default: 0 }
 }, {
   timestamps: true
 });
