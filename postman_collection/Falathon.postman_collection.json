@@ -1,0 +1,163 @@
+{
+	"info": {
+		"_postman_id": "3b7d5517-358c-47a5-a42b-32315b6d285a",
+		"name": "Falathon",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "createReview",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"author_id\": 456,\n    \"entity_id\": 123,\n    \"title\": \"pepe\",\n    \"review_text\": \"qweqweqwe\",\n    \"rating\": 5\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/ratingsAndReviews",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"ratingsAndReviews"
+					]
+				},
+				"description": "Creates a review"
+			},
+			"response": []
+		},
+		{
+			"name": "getMyReviewsOrderer",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/myReviews?author=456",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"myReviews"
+					],
+					"query": [
+						{
+							"key": "author",
+							"value": "456"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "returnsAverageRating",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/averageRatings?entity_id=123",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"averageRatings"
+					],
+					"query": [
+						{
+							"key": "entity_id",
+							"value": "123"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reviews",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/reviews?entity_id=321654",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"reviews"
+					],
+					"query": [
+						{
+							"key": "entity_id",
+							"value": "321654"
+						}
+					]
+				},
+				"description": "Get all RatingsAndReviews for a specific entity"
+			},
+			"response": []
+		},
+		{
+			"name": "reviewsByMongoId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/ratingsAndReviews/5f6e68e8e908e020b8f97a62",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"ratingsAndReviews",
+						"5f6e68e8e908e020b8f97a62"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateOwnerReview",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"5f6f841fb9e316b27ea2f714\",\n    \"response\": {\n        \"author_id\": \"123456\",\n        \"response\": \"test comment from owner\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/cupdateOwnerResponse",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"cupdateOwnerResponse"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
