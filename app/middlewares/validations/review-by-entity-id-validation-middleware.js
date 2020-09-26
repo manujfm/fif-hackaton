@@ -21,7 +21,6 @@ module.exports.getReviewByEntityValidation = async (req, res, next) => {
     return response(res, 400, 'Error', 'limit incorrect');
   }
 
-<<<<<<< HEAD
   if (minRating && (isNaN(minRating) || (minRating < 1 || minRating > 5))) {
     return response(res, 400, 'Error', 'min rating incorrect');
   }
@@ -33,9 +32,7 @@ module.exports.getReviewByEntityValidation = async (req, res, next) => {
   if ((minRating && maxRating) && (minRating > maxRating)) {
     return response(res, 400, 'Error', 'min rating cannot be greater than maximum');
   }
-=======
   const sortByFilter = sortByData(sortBy);
->>>>>>> master
 
   req.queryParams = { 
     entity_id: parseInt(entity_id),
