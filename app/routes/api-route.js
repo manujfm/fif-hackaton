@@ -8,6 +8,7 @@ const {
     getentity_idRatingsAndReviews,
     getAverageRatings,
     updateOwnerRespone,
+    patchReportReviews,
 } = require('../middlewares');
 
 const router = Router();

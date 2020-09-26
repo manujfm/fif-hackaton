@@ -1,3 +1,5 @@
+const { createRatingsAndReviews } = require('../controllers/report-review-controller');
+
 /**
  * Reports one review, only admits one report per author
  * @param {Request} req
@@ -6,9 +8,13 @@
  */
 module.exports.reportReviewMiddleware = async (req, res, next) => {
   try {
-    const reportParams = req.body;
+    const result = await createRatingsAndReviews(req.body);
+    req.result = !result ? "You can't report two times the same review" : 'Report successfully';
     return next();
   } catch (e) {
-    return next();
+    return res.status(500).json({
+      code: 'Error',
+      error: e.message,
+    });
   }
 };
