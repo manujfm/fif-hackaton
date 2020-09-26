@@ -5,7 +5,7 @@ module.exports.averageRatingController = async (entity) => {
     const avg = await Review.aggregate([
       {
         $match: {
-          entity_id: `${entity}`
+          entity_id: Number(entity)
         }
       },
       {

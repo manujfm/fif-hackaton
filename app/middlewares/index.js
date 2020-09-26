@@ -13,6 +13,7 @@ const { getAverageRating } = require('./get-average-rating-middleware');
 const { updateOwnerResponseMiddleware } = require('./update-owner-response-middleware');
 const { getCacheMiddleware } = require('./cache/get-cache-middleware');
 const { setCacheMiddleware } = require('./cache/set-cache-middleware');
+const { deleteCacheMiddleware } = require('./cache/delete-cache-middleware');
 
 
 module.exports.ratingsAndReviews = [
@@ -49,11 +50,13 @@ module.exports.myReviews = [
 
 module.exports.updateOwnerRespone = [
   updateOwnerResponseMiddleware,
+  deleteCacheMiddleware,
   responseMiddleware
 ];
 
 module.exports.updateRatingsAndReviews = [
   reviewValidation,
   updateRatingsAndReviewsMiddleware,
+  deleteCacheMiddleware,
   responseMiddleware
 ];
