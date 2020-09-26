@@ -21,7 +21,6 @@
        "class-methods-use-this": "off",
        "arrow-body-style":"off",
        "comma-dangle": "off",
-       "camelcase": "off",
+       "camelcase": "off"
      }
-
    }
