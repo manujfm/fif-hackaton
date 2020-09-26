@@ -28,9 +28,17 @@ module.exports.getRatingsAndReviews = async (quey) => {
   }
 };
 
-module.exports.findByEntityId = async (params) => {
+module.exports.findByEntityId = async (quey) => {
   try {
-    const reviews = await Review.find({ entity_id: params.entityId }).lean();
+    const offset = parseInt(quey.offset, 10);
+    const sortByField = quey.sortByFilter.field;
+    const sortByOrder = quey.sortByFilter.order;
+    const sortFilter = [sortByField, sortByOrder];
+    const reviews = await Review.find({ entity_id: quey.entityId })
+      .skip(offset)
+      .limit(query.limit)
+      .sort([sortFilter])
+      .lean();
     return reviews;
   } catch (error) {
     throw error;

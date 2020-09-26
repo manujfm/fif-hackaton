@@ -1,19 +1,22 @@
 const Router = require('express').Router;
-const { ratingsAndAeviews,
-    updateRatingsAndReviews,
-    myReviews,
-    getRatingsAndReviews,
-    getEntityIdRatingsAndReviews,
-    getAverageRatings } = require('../middlewares');
+const { ratingsAndReviews, myReviews, updateRatingsAndReviews, getRatingsAndReviews, getEntityIdRatingsAndReviews, getAverageRatings } = require('../middlewares');
 
 const router = Router();
 
-router.post('/ratingsAndReviews', ratingsAndAeviews);
 router.put('/ratingsAndReviews', updateRatingsAndReviews);
+// Add a new RatingsAndReviews
+router.post('/ratingsAndReviews', ratingsAndReviews);
+
+// Get all RatingsAndReviews for a specific user
 router.get('/myReviews', myReviews);
+
+// Get all RatingsAndReviews for a specific entity(product/seller)
 router.get('/ratingsAndReviews/:reviewId', getRatingsAndReviews);
+
+// Get all RatingsAndReviews for a specific entity(product/seller)
 router.get('/reviews', getEntityIdRatingsAndReviews);
-router.put('/reviews', getEntityIdRatingsAndReviews);
+
+// Get average Ratings for a specific entity
 router.get('/averageRatings', getAverageRatings);
 
 module.exports = router;
