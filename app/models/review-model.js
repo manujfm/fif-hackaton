@@ -14,8 +14,13 @@ const reviewSchema = new Schema({
   description: { type: String },
   reports: [reportsSchema],
   rating: { type: Number, required: true },
-  positives: { type: Number},
-  negatives: { type: Number},
+  ownerRespone: {
+    author_id: { type: Number },
+    response: { type: String }
+  },
+  help: { type: Number, default: 0 },
+  useless: { type: Number, default: 0 },
+  good_review_rating: { type: Number, default: 0 }
 }, {
   timestamps: true
 });
