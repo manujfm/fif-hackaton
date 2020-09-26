@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
+const reportsSchema = new Schema({
+  author_id: { type: Number, required: true },
+  comment: { type: String, required: true },
+});
 /* const ownerResponse = new Schema({
   author_id: { type: Number, required: true },
   response: { type: String, required: true }
@@ -14,6 +18,7 @@ const reviewSchema = new Schema({
   entity_id: { type: Number, required: true },
   title: { type: String, required: true },
   description: { type: String },
+  reports: [reportsSchema],
   rating: { type: Number, required: true },
   ownerRespone: {
     author_id: { type: Number },

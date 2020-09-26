@@ -11,6 +11,7 @@ module.exports.setCacheMiddleware = (req, res, next) => {
     const cacheKey = `${req.hostname}${req.baseUrl}${req.url}`;
     myCache.set(cacheKey, req.response);
   } catch (e) {
+    // eslint-disable-next-line no-console
     console.error(e);
   }
   next();
