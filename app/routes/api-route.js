@@ -10,7 +10,7 @@ router.post('/ratingsAndReviews', ratingsAndReviews);
 // Get all RatingsAndReviews for a specific user
 router.get('/myReviews', myReviews);
 
-// Get all RatingsAndReviews for a specific entity(product/seller)
+// Get RatingsAndReviews for a specific review(product/seller)
 router.get('/ratingsAndReviews/:reviewId', getRatingsAndReviews);
 
 // Get all RatingsAndReviews for a specific entity(product/seller)

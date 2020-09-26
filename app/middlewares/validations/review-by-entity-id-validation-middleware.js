@@ -3,7 +3,7 @@ const { response } = require('../../util/response-query');
 const { entityIdValidate } = require('../../util/validation-utils');
 
 module.exports.getReviewByEntityValidation = async (req, res, next) => {
-  let { entityId, sortBy, offset, limit } = req.query;
+  let { entityId, sortBy, offset, limit, minReating, maxRating } = req.query;
 
   if (entityIdValidate(entityId)) {
     return response(res, 400, 'Error', 'entityId is required');
@@ -19,6 +19,18 @@ module.exports.getReviewByEntityValidation = async (req, res, next) => {
   
   if (limit && (isNaN(offset) || (limit < 1 || limit > 100))) {
     return response(res, 400, 'Error', 'limit incorrect');
+  }
+
+  if (minRating && (isNaN(minRating) || (minRating < 1 || minRating > 5))) {
+    return response(res, 400, 'Error', 'min rating incorrect');
+  }
+
+  if (maxRating && (isNaN(maxRating) || (maxRating < 1 || maxRating > 5))) {
+    return response(res, 400, 'Error', 'max rating incorrect');
+  }
+
+  if ((minRating && maxRating) && (minRating > maxRating)) {
+    return response(res, 400, 'Error', 'min rating cannot be greater than maximum');
   }
 
   req.queryParams = { 
