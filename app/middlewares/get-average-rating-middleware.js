@@ -3,7 +3,7 @@ const { averageRatingController } = require('../controllers/average-rating-contr
 
 module.exports.getAverageRating = async (req, res, next) => {
   try {
-    const average = await averageRatingController(req.entityId);
+    const average = await averageRatingController(req.entity_id);
     req.response = average;
   } catch (error) {
     res.send({ code: 'error', message: error.message }).status(400);
