@@ -1,10 +1,10 @@
-const { type, sortByData } = require('../../util/util-query');
+const { type, sortByData, authorIdValidate } = require('../../util/util-query');
 const { response } = require('../../util/response-query');
 
 module.exports.myReviewsValidationMiddleware = (req, res, next) => {
-  const { author, sortBy, offset, limit } = req.query;
+  const { authorId, sortBy, offset, limit } = req.query;
 
-  if (!author || !type(author, 'string')) {
+  if (authorIdValidate(authorId)) {
     return response(res, 400, 'Error', 'author incorrect or missing');
   }
 
@@ -23,7 +23,7 @@ module.exports.myReviewsValidationMiddleware = (req, res, next) => {
   const sortByFilter = sortByData(sortBy);
 
   req.queryParams = {
-    author,
+    author: Number.parseInt(authorId),
     sortByFilter,
     offset,
     limit
