@@ -1,23 +1,23 @@
-/* eslint-disable camelcase */
-const { type } = require('../../util/util-query');
+const { type, sortByData } = require('../../util/util-query');
 const { response } = require('../../util/response-query');
-
 
 module.exports.getReviewByEntityValidation = async (req, res, next) => {
   const { entityId, sortBy, offset, limit } = req.query;
+
   if (!entityId || !type(entityId, 'string')) {
     return response(res, 400, 'Error', 'entityId is required');
   }
   if (sortBy && (!type(sortBy, 'string'))) {
     return response(res, 400, 'Error', 'sortBy incorrect');
   }
-  if (offset && (!type(offset, 'number') || (offset < 0) || !Number.isInteger(offset))) {
+  if (offset && isNaN(offset)) {
     return response(res, 400, 'Error', 'offset incorrect');
   }
-  if (limit && (!type(limit, 'number') || (limit < 1 || limit > 100) || !Number.isInteger(limit))) {
+  if (limit && isNaN(offset)) {
     return response(res, 400, 'Error', 'limit incorrect');
   }
-  req.queryParams = { entityId, sortBy, offset, limit };
+  const sortByFilter = sortByData(sortBy);
+  req.queryParams = { entityId, sortByFilter, offset, limit };
 
   return next();
 };
