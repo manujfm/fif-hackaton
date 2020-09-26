@@ -1,6 +1,6 @@
 const { findByEntityId } = require('../controllers/ratings-and-reviews-controller');
 
-module.exports.reviewsMiddleware = async (req, res, next) => {
+module.exports.getReviewsMiddleware = async (req, res, next) => {
   try {
     const result = await findByEntityId(req.queryParams);
     req.response = result;

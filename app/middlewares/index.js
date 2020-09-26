@@ -2,7 +2,7 @@ const { reviewValidation } = require('./validations/review-validation-middleware
 const { reviewIdValidationMiddleware } = require('./validations/review-id-valdiation-middleware');
 const { ratingsAndReviewsMiddleware } = require('./create-reviews-middleware');
 const { findReviewByIdMiddleware } = require('./find-review-by-id-middleware');
-const { reviewsMiddleware } = require('./get-reviews-middleware');
+const { getReviewsMiddleware } = require('./get-reviews-middleware');
 const { getReviewByEntityValidation } = require('../middlewares/validations/review-by-entity-id-validation-middleware');
 const { responseMiddleware } = require('./response/response-middleware');
 const { myReviewsValidationMiddleware } = require('./validations/my-reviews-validation-middleware');
@@ -25,7 +25,7 @@ module.exports.getRatingsAndReviews = [
 
 module.exports.getEntityIdRatingsAndReviews = [
   getReviewByEntityValidation,
-  reviewsMiddleware,
+  getReviewsMiddleware,
   responseMiddleware
 ];
 

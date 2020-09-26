@@ -15,7 +15,7 @@ module.exports.averageRatingController = async (entity) => {
           averageRating: { $avg: '$rating' }
         }
       }
-    ]).lean();
+    ]);
     return avg;
   } catch (error) {
     throw error;

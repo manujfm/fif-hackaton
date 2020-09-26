@@ -30,7 +30,7 @@ module.exports.getRatingsAndReviews = async (quey) => {
 
 module.exports.findByEntityId = async (params) => {
   try {
-    const reviews = await Review.find({ product_id: params.entityId }).lean();
+    const reviews = await Review.find({ entity_id: params.entityId }).lean();
     return reviews;
   } catch (error) {
     throw error;
