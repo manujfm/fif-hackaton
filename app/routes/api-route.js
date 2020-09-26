@@ -1,3 +1,4 @@
+const { myCache } = require('../util/cache');
 const Router = require('express').Router;
 const {
     ratingsAndReviews,
@@ -26,6 +27,12 @@ router.get('/reviews', getentity_idRatingsAndReviews);
 
 // Get average Ratings for a specific entity
 router.get('/averageRatings', getAverageRatings);
+
 router.patch('/cupdateOwnerResponse', updateOwnerRespone);
+
+router.get('/cache', (req, res) => {
+  res.send(myCache.getStats());
+});
+
 
 module.exports = router;
