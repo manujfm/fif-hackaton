@@ -16,11 +16,12 @@ const reviewSchema = new Schema({
   description: { type: String },
   rating: { type: Number, required: true },
   ownerRespone: {
-    author_id: { type: Number, required: true },
-    response: { type: String, required: true }
+    author_id: { type: Number },
+    response: { type: String }
   },
-  positives: { type: Number},
-  negatives: { type: Number},
+  help: { type: Number, default: 0 },
+  useless: { type: Number, default: 0 },
+  good_review_rating: { type: Number, default: 0 }
 }, {
   timestamps: true
 });

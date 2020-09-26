@@ -1,16 +1,17 @@
 /* eslint-disable radix */
 /* eslint-disable camelcase */
-const { type, authorIdValidate, entityIdValidate } = require('../../util/util-query');
+const { type, } = require('../../util/util-query');
 const { response } = require('../../util/response-query');
+const { authorIdValidate, entityIdValidate } = require('../../util/validation-utils');
 
 module.exports.reviewValidation = async (req, res, next) => {
-  const { authorId, entityId, title, description, rating } = req.body;
+  const { author_id, entity_id, title, description, rating, id, help, useless } = req.body;
 
-  if (authorIdValidate(authorId)) {
+  if (authorIdValidate(author_id)) {
     return response(res, 400, 'Error', 'author id incorrect');
   }
 
-  if (entityIdValidate(entityId)) {
+  if (entityIdValidate(entity_id)) {
     return response(res, 400, 'Error', 'entity id incorrect');
   }
 
@@ -23,11 +24,14 @@ module.exports.reviewValidation = async (req, res, next) => {
   }
 
   req.review = {
-    authorId: Number.parseInt(authorId),
-    entityId: Number.parseInt(entityId),
+    author_id: Number.parseInt(author_id),
+    entity_id: Number.parseInt(entity_id),
     title,
     description,
-    rating
+    rating,
+    id,
+    help,
+    useless
   };
 
   return next();

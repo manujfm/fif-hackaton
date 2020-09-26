@@ -3,13 +3,15 @@ const {
     ratingsAndReviews,
     myReviews,
     getRatingsAndReviews,
-    getEntityIdRatingsAndReviews,
+    updateRatingsAndReviews,
+    getentity_idRatingsAndReviews,
     getAverageRatings,
     updateOwnerRespone
 } = require('../middlewares');
 
 const router = Router();
 
+router.put('/ratingsAndReviews', updateRatingsAndReviews);
 // Add a new RatingsAndReviews
 router.post('/ratingsAndReviews', ratingsAndReviews);
 
@@ -20,7 +22,7 @@ router.get('/myReviews', myReviews);
 router.get('/ratingsAndReviews/:reviewId', getRatingsAndReviews);
 
 // Get all RatingsAndReviews for a specific entity(product/seller)
-router.get('/reviews', getEntityIdRatingsAndReviews);
+router.get('/reviews', getentity_idRatingsAndReviews);
 
 // Get average Ratings for a specific entity
 router.get('/averageRatings', getAverageRatings);
