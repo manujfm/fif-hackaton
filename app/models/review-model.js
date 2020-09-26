@@ -8,8 +8,9 @@ const reviewSchema = new Schema({
   title: { type: String, required: true },
   description: { type: String },
   rating: { type: Number, required: true },
-  positives: { type: Number},
-  negatives: { type: Number},
+  help: { type: Number, default: 0 },
+  useless: { type: Number, default: 0 },
+  good_review_rating: { type: Number, default: 0 }
 }, {
   timestamps: true
 });

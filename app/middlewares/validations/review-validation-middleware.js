@@ -3,7 +3,7 @@ const { type, authorIdValidate, entityIdValidate } = require('../../util/util-qu
 const { response } = require('../../util/response-query');
 
 module.exports.reviewValidation = async (req, res, next) => {
-  const { authorId, entityId, title, description, rating } = req.body;
+  const { authorId, entityId, title, description, rating, id, help, useless } = req.body;
 
   if (authorIdValidate(authorId)) {
     return response(res, 400, 'Error', 'author id incorrect');
@@ -26,7 +26,10 @@ module.exports.reviewValidation = async (req, res, next) => {
     entityId: Number.parseInt(entityId),
     title,
     description,
-    rating
+    rating,
+    id,
+    help,
+    useless
   };
 
   return next();

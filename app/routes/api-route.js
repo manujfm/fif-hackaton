@@ -1,8 +1,9 @@
 const Router = require('express').Router;
-const { ratingsAndReviews, myReviews, getRatingsAndReviews, getEntityIdRatingsAndReviews, getAverageRatings } = require('../middlewares');
+const { ratingsAndReviews, myReviews, updateRatingsAndReviews, getRatingsAndReviews, getEntityIdRatingsAndReviews, getAverageRatings } = require('../middlewares');
 
 const router = Router();
 
+router.put('/ratingsAndReviews', updateRatingsAndReviews);
 // Add a new RatingsAndReviews
 router.post('/ratingsAndReviews', ratingsAndReviews);
 
