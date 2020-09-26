@@ -16,15 +16,15 @@ module.exports.getReviewByEntityValidation = async (req, res, next) => {
   if (offset && (isNaN(offset) || offset < 0)) {
     return response(res, 400, 'Error', 'offset incorrect');
   }
-  
+
   if (limit && (isNaN(offset) || (limit < 1 || limit > 100))) {
     return response(res, 400, 'Error', 'limit incorrect');
   }
 
   const sortByFilter = sortByData(sortBy);
 
-  req.queryParams = { 
-    entity_id: parseInt(entity_id),
+  req.queryParams = {
+    entity_id: parseInt(entity_id, 10),
     sortByFilter,
     offset,
     limit
