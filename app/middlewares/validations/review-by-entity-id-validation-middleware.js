@@ -3,7 +3,7 @@ const { response } = require('../../util/response-query');
 const { entityIdValidate } = require('../../util/validation-utils');
 
 module.exports.getReviewByEntityValidation = async (req, res, next) => {
-  let {  entity_id, sortBy, offset, limit, minReating, maxRating } = req.query;
+  let {  entity_id, sortBy, offset, limit, minRating, maxRating } = req.query;
 
   if (entityIdValidate(entity_id)) {
     return response(res, 400, 'Error', 'entity_id is required');
