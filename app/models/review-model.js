@@ -1,10 +1,12 @@
 const mongoose = require('mongoose');
+const { REPORT_TYPES } = require('../constants/enums');
 
 const Schema = mongoose.Schema;
 
 const reportsSchema = new Schema({
   author_id: { type: Number, required: true },
   comment: { type: String, required: true },
+  report_type: { type: String, default: REPORT_TYPES.OTHER }
 });
 
 const reviewSchema = new Schema({
