@@ -145,14 +145,14 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/api/cupdateOwnerResponse",
+					"raw": "localhost:3000/api/updateOwnerResponse",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
 						"api",
-						"cupdateOwnerResponse"
+						"updateOwnerResponse"
 					]
 				}
 			},
@@ -165,7 +165,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"id\": \"5f6fac42ae323f2d43c3ce5e\",\n    \"author_id\": 22,\n    \"comment\": \"quien te conoce, mostrenco?\"\n}",
+					"raw": "{\n    \"id\": \"5f6fac42ae323f2d43c3ce5e\",\n    \"author_id\": 10,\n    \"comment\": \"No room for racist\",\n    \"report_type\": \"RACISM\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -182,6 +182,34 @@
 						"api",
 						"reviews",
 						"report"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Review put",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"author_id\": \"23485\",\n    \"entity_id\": \"1104\",\n    \"rating\": 1,\n    \"description\": \"The pleats on the bib make this look like something from chloe sevigny's wardrobe on the set of big love. and the shoulders are cut for an offensive lineman.\",\n    \"title\": \"Disappointed\",\n    \"useless\": 56,\n    \"help\":7000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/ratingsAndReviews",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"ratingsAndReviews"
 					]
 				}
 			},

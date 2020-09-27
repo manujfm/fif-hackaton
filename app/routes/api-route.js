@@ -35,7 +35,7 @@ router.patch('/reviews/report', patchReportReviews);
 router.get('/averageRatings', getAverageRatings);
 
 // Set owner response
-router.patch('/cupdateOwnerResponse', updateOwnerRespone);
+router.patch('/updateOwnerResponse', updateOwnerRespone);
 
 router.get('/cache', (req, res) => {
   res.send(myCache.getStats());
