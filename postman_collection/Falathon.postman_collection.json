@@ -145,14 +145,14 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/api/cupdateOwnerResponse",
+					"raw": "localhost:3000/api/updateOwnerResponse",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
 						"api",
-						"cupdateOwnerResponse"
+						"updateOwnerResponse"
 					]
 				}
 			},
@@ -165,7 +165,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"id\": \"5f6fac42ae323f2d43c3ce5e\",\n    \"author_id\": 22,\n    \"comment\": \"quien te conoce, mostrenco?\"\n}",
+					"raw": "{\n    \"id\": \"5f6fac42ae323f2d43c3ce5e\",\n    \"author_id\": 10,\n    \"comment\": \"No room for racist\",\n    \"report_type\": \"RACISM\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
