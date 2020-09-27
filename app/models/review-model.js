@@ -6,12 +6,6 @@ const reportsSchema = new Schema({
   author_id: { type: Number, required: true },
   comment: { type: String, required: true },
 });
-/* const ownerResponse = new Schema({
-  author_id: { type: Number, required: true },
-  response: { type: String, required: true }
-}, {
-  timestamps: true
-}); */
 
 const reviewSchema = new Schema({
   author_id: { type: Number, required: true },

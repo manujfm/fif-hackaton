@@ -1,5 +1,3 @@
-/* eslint-disable radix */
-/* eslint-disable camelcase */
 const { type, } = require('../../util/util-query');
 const { response } = require('../../util/response-query');
 const { authorIdValidate, entityIdValidate } = require('../../util/validation-utils');

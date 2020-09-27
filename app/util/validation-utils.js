@@ -1,4 +1,3 @@
-// const { config } = require('../config');
 const { type } = require('./util-query');
 
 const utils = {
