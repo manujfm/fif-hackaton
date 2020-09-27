@@ -55,7 +55,7 @@ module.exports.findByEntityId = async (query) => {
     const sortByGood = sortByGoodFilter(query.sortByGood);
     const queryFilter = getQueryFilterByRating(filterOperation, filterRating, query.entity_id);
     const finalOrder = [sortFilter];
-    if (sortByGood) finalOrder.push(['good', sortByGood])
+    if (sortByGood) finalOrder.push(['good', sortByGood]);
     const reviews = await Review
       .find(queryFilter)
       .skip(offset)

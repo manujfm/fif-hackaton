@@ -4,7 +4,7 @@ const sinon = require('sinon');
 
 const expect = chai.expect;
 
-describe('average-rating-controller', () => {
+describe('rating-by-id-controller', () => {
     beforeEach(() => {
         mockery.enable({
             warnOnReplace: false,
@@ -15,25 +15,29 @@ describe('average-rating-controller', () => {
     afterEach(() => {
         mockery.deregisterAll()
     })
-    it('averageRatingController success', async () => {
+    it('findReviewById success', async () => {
         const sinonSpy = sinon.spy();
         mockery.registerMock('../models/review-model', {
-            aggregate: sinonSpy
+            findById: () => {
+                return {
+                    lean: sinonSpy
+                }
+            }
         });
-        const func = require('./average-rating-controller').averageRatingController;
-        await func();
+        const func = require('./rating-by-id-controller').findReviewById;
+        await func(123);
 
         expect(sinonSpy.called).to.be.true;
     });
 
-    it('averageRatingController catch error', async () => {
+    it('findReviewById catch error', async () => {
         const sinonSpy = sinon.spy();
         mockery.registerMock('../models/review-model', {
-            aggregate: () => {
+            findById: () => {
                 throw 'error'
             }
         });
-        const func = require('./average-rating-controller').averageRatingController;
+        const func = require('./rating-by-id-controller').findReviewById;
         try {
             await func();
         } catch (error) {
