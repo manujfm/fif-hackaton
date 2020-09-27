@@ -6,12 +6,6 @@ const reportsSchema = new Schema({
   author_id: { type: Number, required: true },
   comment: { type: String, required: true },
 });
-/* const ownerResponse = new Schema({
-  author_id: { type: Number, required: true },
-  response: { type: String, required: true }
-}, {
-  timestamps: true
-}); */
 
 const reviewSchema = new Schema({
   author_id: { type: Number, required: true },
@@ -26,7 +20,7 @@ const reviewSchema = new Schema({
   },
   help: { type: Number, default: 0 },
   useless: { type: Number, default: 0 },
-  good_review_rating: { type: Number, default: 0 }
+  good: { type: Number, default: 0 }
 }, {
   timestamps: true
 });
