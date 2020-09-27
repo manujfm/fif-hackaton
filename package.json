@@ -4,7 +4,8 @@
   "description": "",
   "main": "./bin/www",
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "nodemon ./bin/www",
+    "test": "mocha ./app/**/*.spec.js ./app/**/**/*.spec.js ./app/**/**/**/*.spec.js -t 10000"
   },
   "nyc": {
     "include": [
@@ -48,6 +49,7 @@
     "pino": "^5.15.0",
     "querystring": "^0.2.0",
     "replaceall": "^0.1.6",
+    "should": "^13.2.3",
     "sonic-boom": "^0.7.6",
     "stream-buffers": "^3.0.2",
     "swagger-ui-express": "^4.0.7",

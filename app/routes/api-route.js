@@ -13,7 +13,9 @@ const {
 
 const router = Router();
 
+// Add rating from other users a specific review
 router.put('/ratingsAndReviews', updateRatingsAndReviews);
+
 // Add a new RatingsAndReviews
 router.post('/ratingsAndReviews', ratingsAndReviews);
 
@@ -32,11 +34,11 @@ router.patch('/reviews/report', patchReportReviews);
 // Get average Ratings for a specific entity
 router.get('/averageRatings', getAverageRatings);
 
+// Set owner response
 router.patch('/cupdateOwnerResponse', updateOwnerRespone);
 
 router.get('/cache', (req, res) => {
   res.send(myCache.getStats());
 });
-
 
 module.exports = router;
