@@ -25,7 +25,7 @@ POST /ratingsAndReviews
 GET  /myReviews
 GET  /ratingsAndReviews
 GET  /reviews
-PUT  /reviews/report
+PATCH  /reviews/report
 GET  /averageRatings
 ```
 
