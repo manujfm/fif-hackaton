@@ -1,7 +1,7 @@
 const mockery = require('mockery')
 const sinon = require("sinon");
 const should = require('should')
-var httpMocks = require('node-mocks-http');
+const httpMocks = require('node-mocks-http');
 
 describe("entity validation", () => {
 
