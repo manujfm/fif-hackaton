@@ -1,6 +1,7 @@
 const Review = require('../models/review-model');
 
 const { getQueryFilterByRating, sortByGoodFilter } = require('../util/util-query');
+const { ENUMS } = require('../constants/enums');
 
 module.exports.createRatingsAndReviews = async (review) => {
   try {
@@ -55,7 +56,7 @@ module.exports.findByEntityId = async (query) => {
     const sortByGood = sortByGoodFilter(query.sortByGood);
     const queryFilter = getQueryFilterByRating(filterOperation, filterRating, query.entity_id);
     const finalOrder = [sortFilter];
-    if (sortByGood) finalOrder.push(['good', sortByGood]);
+    if (sortByGood) finalOrder.push([ENUMS.GOOD, sortByGood])
     const reviews = await Review
       .find(queryFilter)
       .skip(offset)
@@ -81,7 +82,7 @@ module.exports.updateRatingsAndReviews = async (query) => {
     if (!localReview.help || remoteReview.useless > localReview.useless) {
       finalReview.useless = remoteReview.useless;
     }
-    finalReview.good_review_rating = finalReview.help - finalReview.useless;
+    finalReview.good = finalReview.help - finalReview.useless;
     const res = await Review.update(finalReview);
     return res;
   } catch (error) {
