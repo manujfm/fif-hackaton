@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 
 // eslint-disable-next-line consistent-return
 const { response } = require('../../util/response-query');

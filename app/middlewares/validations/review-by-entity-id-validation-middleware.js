@@ -36,7 +36,7 @@ module.exports.getReviewByEntityValidation = async (req, res, next) => {
   const sortByFilter = sortByData(sortBy);
 
   req.queryParams = {
-    entity_id: parseInt(entity_id),
+    entity_id: parseInt(entity_id, 10),
     sortByFilter,
     offset,
     limit,

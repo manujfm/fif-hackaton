@@ -15,8 +15,8 @@ module.exports.getCacheMiddleware = (req, res, next) => {
       return next();
     }
     req.response = response;
-    responseMiddleware(req, res);
+    return responseMiddleware(req, res);
   } catch (e) {
-    next();
+    return next();
   }
 };
