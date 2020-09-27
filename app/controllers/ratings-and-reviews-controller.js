@@ -1,5 +1,7 @@
 const Review = require('../models/review-model');
 
+const { getQueryFilterByRating, sortByGoodFilter } = require('../util/util-query');
+
 module.exports.createRatingsAndReviews = async (review) => {
   try {
     const newReview = new Review(review);
@@ -41,17 +43,24 @@ module.exports.getRatingsAndReviews = async (query) => {
   }
 };
 
-module.exports.findByentity_id = async (query) => {
+module.exports.findByEntityId = async (query) => {
   try {
     const offset = parseInt(query.offset, 10);
     const limit = parseInt(query.limit, 10);
     const sortByField = query.sortByFilter.field;
     const sortByOrder = query.sortByFilter.order;
+    const filterRating = query.filterRating;
+    const filterOperation = query.filterOperator;
     const sortFilter = [sortByField, sortByOrder];
-    const reviews = await Review.find({ entity_id: query.entity_id })
+    const sortByGood = sortByGoodFilter(query.sortByGood);
+    const queryFilter = getQueryFilterByRating(filterOperation, filterRating, query.entity_id);
+    const finalOrder = [sortFilter];
+    if (sortByGood) finalOrder.push(['good', sortByGood])
+    const reviews = await Review
+      .find(queryFilter)
       .skip(offset)
       .limit(limit)
-      .sort([sortFilter])
+      .sort(finalOrder)
       .lean();
     return reviews;
   } catch (error) {

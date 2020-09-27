@@ -1,8 +1,7 @@
-// const { config } = require('../config');
+const { filterByRating } = require('../util/filter-utils')
 
 const utils = {
   type: (value, type) => {
-    // eslint-disable-next-line valid-typeof
     return typeof value === type;
   },
   sortByData: (sortBy) => {
@@ -28,7 +27,26 @@ const utils = {
           order: -1
         };
     }
-  }
+  },
+  getQueryFilterByRating: (filterOperation, filterRating, entity_id) => {
+    if (filterOperation && filterRating) {
+      return {
+        entity_id,
+        rating: filterByRating(filterOperation, filterRating)
+      }
+    }
+    return {
+      entity_id
+    }
+  },
+  sortByGoodFilter: (sortBy) => {
+    switch (sortBy) {
+      case 'asc':
+        return -1
+      default:
+        return 1
+    }
+  },
 };
 
 module.exports = utils;
