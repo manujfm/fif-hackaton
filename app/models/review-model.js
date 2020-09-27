@@ -26,7 +26,7 @@ const reviewSchema = new Schema({
   },
   help: { type: Number, default: 0 },
   useless: { type: Number, default: 0 },
-  good_review_rating: { type: Number, default: 0 }
+  good: { type: Number, default: 0 }
 }, {
   timestamps: true
 });
