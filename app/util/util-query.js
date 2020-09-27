@@ -1,4 +1,6 @@
 const { filterByRating } = require('../util/filter-utils')
+const { ENUMS } = require('../constants/enums')
+
 
 const utils = {
   type: (value, type) => {
@@ -6,24 +8,24 @@ const utils = {
   },
   sortByData: (sortBy) => {
     switch (sortBy) {
-      case 'most recent':
+      case ENUMS.MOST_RECENT:
         return {
-          field: 'createdAt',
+          field: ENUMS.CREATED_AT,
           order: -1
         };
-      case 'highest rated':
+      case ENUMS.HIGHEST_RATED:
         return {
-          field: 'rating',
+          field: ENUMS.RATING,
           order: -1
         };
-      case 'lowest rated':
+      case ENUMS.LOWEST_RATED:
         return {
-          field: 'rating',
+          field: ENUMS.RATING,
           order: 1
         };
       default:
         return {
-          field: 'createdAt',
+          field: ENUMS.CREATED_AT,
           order: -1
         };
     }
@@ -41,7 +43,7 @@ const utils = {
   },
   sortByGoodFilter: (sortBy) => {
     switch (sortBy) {
-      case 'asc':
+      case ENUMS.ASC:
         return -1
       default:
         return 1

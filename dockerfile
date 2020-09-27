@@ -2,16 +2,12 @@ FROM node:10-alpine
 
 ARG NODE_ENV=${NODE_ENV:-development}
 # Create app directory
-WORKDIR /usr/src/123auth
+WORKDIR /usr/src/3000
 
 COPY . .
 
-# all necesary to build bcrypt
-RUN apk --no-cache add --virtual builds-deps build-base python
-
 RUN npm install
-RUN npm run build
 
-EXPOSE 8080
+EXPOSE 3000
 
-CMD npm run start-app
+CMD npm run start
