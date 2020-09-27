@@ -8,7 +8,7 @@ const { getReviewByEntityValidation } = require('../middlewares/validations/revi
 const { responseMiddleware } = require('./response/response-middleware');
 const { myReviewsValidationMiddleware } = require('./validations/my-reviews-validation-middleware');
 const { myReviewsMiddleware } = require('./my-reviews-middleware');
-const { entity_idValidationMiddleware } = require('./validations/entity-id-validation-middleware');
+const { entityIdValidationMiddleware } = require('./validations/entity-id-validation-middleware');
 const { getAverageRating } = require('./get-average-rating-middleware');
 const { updateOwnerResponseMiddleware } = require('./update-owner-response-middleware');
 const { getCacheMiddleware } = require('./cache/get-cache-middleware');
@@ -30,14 +30,14 @@ module.exports.getRatingsAndReviews = [
   responseMiddleware
 ];
 
-module.exports.getentity_idRatingsAndReviews = [
+module.exports.getEntityByIdRatingsAndReviews = [
   getReviewByEntityValidation,
   getReviewsMiddleware,
   responseMiddleware
 ];
 
 module.exports.getAverageRatings = [
-  entity_idValidationMiddleware,
+  entityIdValidationMiddleware,
   getCacheMiddleware,
   getAverageRating,
   setCacheMiddleware,

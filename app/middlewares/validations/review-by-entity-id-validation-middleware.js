@@ -3,7 +3,7 @@ const { response } = require('../../util/response-query');
 const { entityIdValidate } = require('../../util/validation-utils');
 
 module.exports.getReviewByEntityValidation = async (req, res, next) => {
-  const { entity_id, sortBy, offset, limit } = req.query;
+  let { entity_id, sortBy, offset, limit, filterRating, filterOperator, sortByGood } = req.query;
 
   if (entityIdValidate(entity_id)) {
     return response(res, 400, 'Error', 'entity_id is required');
@@ -21,13 +21,28 @@ module.exports.getReviewByEntityValidation = async (req, res, next) => {
     return response(res, 400, 'Error', 'limit incorrect');
   }
 
+  if (filterRating && (isNaN(filterRating) || (filterRating < 1 || filterRating > 5))) {
+    return response(res, 400, 'Error', 'filter rating value incorrect');
+  }
+
+  if ((filterOperator) && (filterOperator !== '>' && filterOperator !== '<' && filterOperator !== '=')) {
+    return response(res, 400, 'Error', 'filter operator incorrect');
+  }
+
+  if (sortByGood && (sortByGood !== 'asc' && sortByGood !== 'desc')) {
+    return response(res, 400, 'Error', 'sort by good incorrect');
+  }
+
   const sortByFilter = sortByData(sortBy);
 
   req.queryParams = {
     entity_id: parseInt(entity_id, 10),
     sortByFilter,
     offset,
-    limit
+    limit,
+    filterRating,
+    filterOperator,
+    sortByGood,
   };
   return next();
 };
