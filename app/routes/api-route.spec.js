@@ -1,11 +1,11 @@
 const mockery = require('mockery');
 const chai = require('chai');
 const sinon = require('sinon');
-const baseSpec = require('../base.spec');
+// const baseSpec = require('../base.spec');
 
 const expect = chai.expect;
 
-baseSpec('bffRoute', () => {
+//baseSpec('bffRoute', () => {
   describe('checking the actions', () => {
     beforeEach(() => {
       actionsMock = {
@@ -41,4 +41,4 @@ baseSpec('bffRoute', () => {
       // expect(getMerchant.args[0][0]).to.be.equal('/merchant/:doc_type?/:doc_number?');
     }); */
   });
-});
+// });
