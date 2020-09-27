@@ -1,5 +1,6 @@
-const { Types } = require('mongoose');
 const { VALIDATION } = require('../../constants/validations');
+const { response } = require('../../util/response-query');
+const validateUtils = require('../../util/validation-utils');
 
 /**
  * Validates the body of the report endpoint
@@ -10,20 +11,17 @@ const { VALIDATION } = require('../../constants/validations');
 module.exports.reviewReportValidation = async ({ body }, res, next) => {
   try {
     const { id, author_id, comment } = body;
-    if (!id || !Types.ObjectId.isValid(id)) {
-      return res.status(400).json({ message: VALIDATION.ERROR_PARAMS.REVIEW_ID });
+    if (validateUtils.mongoIdValidate(id)) {
+      return response(res, 400, 'Error', VALIDATION.ERROR_PARAMS.REVIEW_ID);
     }
-    if (!author_id) {
-      return res.status(400).json({ message: VALIDATION.ERROR_PARAMS.AUTHOR_ID });
+    if (validateUtils.authorIdValidate(author_id)) {
+      return response(res, 400, 'Error', VALIDATION.ERROR_PARAMS.AUTHOR_ID);
     }
     if (!comment) {
-      return res.status(400).json({ message: VALIDATION.ERROR_PARAMS.ADD_COMMENT });
+      return response(res, 400, 'Error', VALIDATION.ERROR_PARAMS.ADD_COMMENT);
     }
     return next();
   } catch (e) {
-    return res.status(500).json({
-      code: 'error',
-      error: e.message,
-    });
+    return response(res, 500, 'Error', e.message);
   }
 };
