@@ -1,3 +1,4 @@
+/* eslint-disable radix */
 const { type, } = require('../../util/util-query');
 const { response } = require('../../util/response-query');
 const { authorIdValidate, entityIdValidate } = require('../../util/validation-utils');
@@ -19,7 +20,7 @@ module.exports.reviewValidation = async (req, res, next) => {
   }
 
   if (!rating || !type(rating, 'number')) {
-    return response(res, 400, 'Error',  VALIDATION.ERROR_PARAMS.RATING);
+    return response(res, 400, 'Error', VALIDATION.ERROR_PARAMS.RATING);
   }
 
   req.review = {
