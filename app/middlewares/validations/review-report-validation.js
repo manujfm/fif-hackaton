@@ -10,7 +10,7 @@ const validateUtils = require('../../util/validation-utils');
 module.exports.reviewReportValidation = async ({ body }, res, next) => {
   try {
     const { id, author_id, comment } = body;
-    if (validateUtils.mongoIdValidated(id)) {
+    if (validateUtils.mongoIdValidate(id)) {
       return response(res, 400, 'Error', 'Invalid id');
     }
     if (validateUtils.authorIdValidate(author_id)) {
