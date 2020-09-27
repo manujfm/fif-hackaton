@@ -4,7 +4,8 @@
   "description": "",
   "main": "./bin/www",
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "nodemon ./bin/www",
+    "test": "mocha ./app/**/*.spec.js ./app/**/**/*.spec.js ./app/**/**/**/*.spec.js -t 10000"
   },
   "nyc": {
     "include": [
@@ -36,6 +37,7 @@
     "node-cache": "^5.1.2",
     "node-mocks-http": "^1.8.1",
     "querystring": "^0.2.0",
+    "should": "^13.2.3",
     "swagger-ui-express": "^4.0.7",
     "unit-test": "0.0.9",
     "yamljs": "^0.3.0"
